@@ -31,7 +31,7 @@ public enum Singleton2 implements UserInfoSingleton {
             return this.name;
         }
     };
-    private String name;
+    String name;
 
     public static Singleton2 getInstance() {
         return INSTANCE;

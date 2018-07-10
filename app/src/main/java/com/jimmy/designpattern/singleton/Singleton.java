@@ -24,13 +24,15 @@ package com.jimmy.designpattern.singleton;
  * 2、经过步骤1，instance不为空，外面的那个判断if(instance == null)不成立，直接返回instance，可以减少锁定，提高性能
  * <p>
  * 第一层if是为了减少锁定
+ *
+ * http://www.infoq.com/cn/articles/double-checked-locking-with-delay-initialization
  */
 public class Singleton {
 
     private Singleton() {
     }                    //1. 私有化构造器
 
-    private static Singleton instance = null; //2. 静态初始化单例对象
+    private static volatile Singleton instance = null; //2. 静态初始化单例对象
     private static Object obj = new Object();
 
     public static Singleton getInstance() { //3. 通过静态方法来构造对象
